@@ -6,18 +6,19 @@
 //  Copyright (c) 2012 Alexandre Barbier. All rights reserved.
 //
 
-#import "libJsonParser.h"
+#import "JsonParser.h"
+#import "Defines.h"
 
-@implementation libJsonParser
+@implementation JsonParser
 @synthesize responseData, json, connectionError, parseError;
 
 #pragma mark - Initialisation
 
--(id)initWithUrl:(NSString *)Url
+- (id)initWithUrl:(NSString *)Url
 {
     self = [super init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:@"ParsingFinish" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:@"LoadData" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url]];
 	NSURLConnection *connection =[[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -27,33 +28,29 @@
     return self;
 }
 
-- (void)ParsingFinishEvent:(NSNotification *)notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ParsingFinish" object:nil];
-}
-- (void)LoadData:(NSNotification *)notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LoadData" object:nil];
-}
-
-
--(id)initWithData:(NSMutableData *)data{
+- (id)initWithData:(NSMutableData *)data{
     self = [super init];
     responseData = data;
     return self;
 }
+
 #pragma mark - parsing
 
--(void)parseUrl
+- (void)parseUrl
 {
     NSError* error;
     json = [NSJSONSerialization
             JSONObjectWithData:responseData
             options:kNilOptions
             error:&error];
-        parseError = error;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ParsingFinish" object:nil];
+    parseError = error;
+    if ([self delegate] != nil)
+        [[self delegate] parsingFinishWithResult:json andError:parseError];
+    else
+        [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
 }
 
--(void)parseFile:(NSString *)filePath
+- (void)parseFile:(NSString *)filePath
 {
     responseData = [[NSMutableData alloc] initWithContentsOfFile:filePath];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -62,15 +59,19 @@
                 JSONObjectWithData:responseData
                 options:kNilOptions
                 error:&error];
-            parseError = error;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ParsingFinish" object:nil];
+
+        parseError = error;
+        if ([self delegate] != nil)
+            [[self delegate] parsingFinishWithResult:json andError:parseError];
+        else
+            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
     });
     
 }
 
--(void)parseData:(NSMutableData *)data
+- (void)parseData:(NSMutableData *)data
 {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                    ^{
                        NSError* error;
                        json = [NSJSONSerialization
@@ -78,11 +79,14 @@
                                options:kNilOptions
                                error:&error];
                        parseError = error;
-                       [[NSNotificationCenter defaultCenter] postNotificationName:@"ParsingFinish" object:nil];
+                       if ([self delegate] != nil)
+                           [[self delegate] parsingFinishWithResult:json andError:parseError];
+                       else
+                           [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
                    });
 }
 
--(void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags
+- (void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags
 {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSError* error;
@@ -95,7 +99,6 @@
         NSMutableArray *returnArray = [[NSMutableArray alloc] init];
         for (NSDictionary *a in json)
         {
-            
             NSMutableArray *values = [[NSMutableArray alloc] init];
             for (NSString *arg in tags)
             {
@@ -105,23 +108,39 @@
             id obj = [[containerClass alloc] initWithDictionary:param];
             [returnArray addObject:obj];
         }
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ParsingFinish" object:returnArray];
+        if ([self delegate] != nil)
+            [[self delegate] parsingFinishWithResult:json andError:parseError];
+        else
+            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
     });
 }
 
--(void)parse
+- (void)parse
 {
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSError* error;
         json = [NSJSONSerialization
                 JSONObjectWithData:responseData
                 options:kNilOptions
                 error:&error];
             parseError = error;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ParsingFinish" object:nil];
+        if ([self delegate] != nil)
+            [[self delegate] parsingFinishWithResult:json andError:parseError];
+        else
+            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
     });
 }
+
+#pragma mark - EventHandler
+
+- (void)ParsingFinishEvent:(NSNotification *)notification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kParsingFinishEvent object:nil];
+}
+
+- (void)LoadData:(NSNotification *)notification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLoadDataEvent object:nil];
+}
+
 
 #pragma mark - Connection delegate
 
@@ -144,6 +163,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-   [[NSNotificationCenter defaultCenter] postNotificationName:@"LoadData" object:nil];
+   [[NSNotificationCenter defaultCenter] postNotificationName:kLoadDataEvent object:nil];
 }
+
 @end
