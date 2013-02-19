@@ -1,0 +1,360 @@
+[
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909605,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909607,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909601,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909601,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909601,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909601,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 578,
+ "friend_id": 23,
+ "friend_name": "Mark Zuckerberg",
+ "type": "SA_P_Following",
+ "following": 56,
+ "date": 1353909615,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 133,
+ "friend_id": 3,
+ "friend_name": "Catherine Martel",
+ "type": "SA_P_Following",
+ "following": 12,
+ "date": 1353909615,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 9,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_ReadingStart",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909600,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 12,
+ "bookConcerned_id": 2,
+ "bookTitle": "Correspondance",
+ "type": "SA_B_Purchase",
+ "authorName": "Arthur Rimbaud",
+ "author_id": 2,
+ "date": 1353909601,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/book_004.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/book_004@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/book_004_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/book_004_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 8,
+ "authorConcered_id": 3,
+ "authorName": "Scott Belsky",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909603,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ },
+ {
+ "likesNumber": 123,
+ "authorConcered_id": 25,
+ "authorName": "Mickael Jackson",
+ "type": "SA_A_AllBooksRead",
+ "date": 1353909610,
+ "visualArray": [
+                 {
+                 "picto-bd": "http://dev.omts.fr/reaaad/friend_002.png",
+                 "picto-hd": "http://dev.omts.fr/reaaad/friend_002@2x.png",
+                 "full-bd": "http://dev.omts.fr/reaaad/friend_002_high.png",
+                 "full-hd": "http://dev.omts.fr/reaaad/friend_002_high@2x.png"
+                 }
+                 ]
+ }
+ ]
