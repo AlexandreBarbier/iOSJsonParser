@@ -18,7 +18,7 @@
 		ACA1C3D716D2CC6D0008567D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACA1C3D616D2CC6D0008567D /* Default-568h@2x.png */; };
 		ACA1C3DA16D2CC6D0008567D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA1C3D816D2CC6D0008567D /* MainStoryboard.storyboard */; };
 		ACA1C3DD16D2CC6D0008567D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C3DC16D2CC6D0008567D /* ViewController.m */; };
-		ACEC5A8716D3C14500DFB7F4 /* libJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC5A8516D3C10000DFB7F4 /* libJSON.a */; };
+		ACCD10B716D406860044CB11 /* libABJson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCD10B616D406860044CB11 /* libABJson.a */; };
 		ACEC5A8A16D3CA3B00DFB7F4 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A8916D3CA3B00DFB7F4 /* Response.m */; };
 		ACEC5A9316D3DB1700DFB7F4 /* File.json in Resources */ = {isa = PBXBuildFile; fileRef = ACEC5A9216D3DB1700DFB7F4 /* File.json */; };
 /* End PBXBuildFile section */
@@ -40,12 +40,12 @@
 		ACA1C3D916D2CC6D0008567D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		ACA1C3DB16D2CC6D0008567D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ACA1C3DC16D2CC6D0008567D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		ACEC5A8316D3C10000DFB7F4 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
-		ACEC5A8416D3C10000DFB7F4 /* JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParser.h; sourceTree = "<group>"; };
-		ACEC5A8516D3C10000DFB7F4 /* libJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJSON.a; sourceTree = "<group>"; };
+		ACCD10B316D406860044CB11 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		ACCD10B416D406860044CB11 /* JsonParsedClassBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParsedClassBase.h; sourceTree = "<group>"; };
+		ACCD10B516D406860044CB11 /* JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParser.h; sourceTree = "<group>"; };
+		ACCD10B616D406860044CB11 /* libABJson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libABJson.a; sourceTree = "<group>"; };
 		ACEC5A8816D3CA3B00DFB7F4 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		ACEC5A8916D3CA3B00DFB7F4 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Response.m; sourceTree = "<group>"; };
-		ACEC5A9116D3CF8F00DFB7F4 /* JsonParsedClassBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsonParsedClassBase.h; sourceTree = "<group>"; };
 		ACEC5A9216D3DB1700DFB7F4 /* File.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = File.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,7 +57,7 @@
 				ACA1C3C116D2CC6D0008567D /* UIKit.framework in Frameworks */,
 				ACA1C3C316D2CC6D0008567D /* Foundation.framework in Frameworks */,
 				ACA1C3C516D2CC6D0008567D /* CoreGraphics.framework in Frameworks */,
-				ACEC5A8716D3C14500DFB7F4 /* libJSON.a in Frameworks */,
+				ACCD10B716D406860044CB11 /* libABJson.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 				ACA1C3C616D2CC6D0008567D /* testJSonParser */,
 				ACA1C3BF16D2CC6D0008567D /* Frameworks */,
 				ACA1C3BE16D2CC6D0008567D /* Products */,
-				ACEC5A8016D3C10000DFB7F4 /* JsonParser */,
+				ACCD10B016D406860044CB11 /* JsonParser */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,30 +122,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		ACEC5A8016D3C10000DFB7F4 /* JsonParser */ = {
+		ACCD10B016D406860044CB11 /* JsonParser */ = {
 			isa = PBXGroup;
 			children = (
-				ACEC5A8116D3C10000DFB7F4 /* include */,
-				ACEC5A8516D3C10000DFB7F4 /* libJSON.a */,
+				ACCD10B116D406860044CB11 /* include */,
+				ACCD10B616D406860044CB11 /* libABJson.a */,
 			);
 			name = JsonParser;
-			path = ../../JsonParser/build/JsonParser;
+			path = ../build/JsonParser;
 			sourceTree = "<group>";
 		};
-		ACEC5A8116D3C10000DFB7F4 /* include */ = {
+		ACCD10B116D406860044CB11 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				ACEC5A8216D3C10000DFB7F4 /* JsonParser */,
+				ACCD10B216D406860044CB11 /* JsonParser */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		ACEC5A8216D3C10000DFB7F4 /* JsonParser */ = {
+		ACCD10B216D406860044CB11 /* JsonParser */ = {
 			isa = PBXGroup;
 			children = (
-				ACEC5A8316D3C10000DFB7F4 /* Defines.h */,
-				ACEC5A9116D3CF8F00DFB7F4 /* JsonParsedClassBase.h */,
-				ACEC5A8416D3C10000DFB7F4 /* JsonParser.h */,
+				ACCD10B316D406860044CB11 /* Defines.h */,
+				ACCD10B416D406860044CB11 /* JsonParsedClassBase.h */,
+				ACCD10B516D406860044CB11 /* JsonParser.h */,
 			);
 			path = JsonParser;
 			sourceTree = "<group>";
