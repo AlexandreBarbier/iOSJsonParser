@@ -30,7 +30,7 @@
 
 - (id)initWithClass:(NSString*)className andTag:(NSMutableArray *)tags forURL:(NSString *)Url{
     self = [super init];
-    [self setParsingType:parsingTypeInClass];
+    [self setParsingType:parsingTypeInClassWithUrl];
     [self setClassName:className];
     [self setTags:tags];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
@@ -110,23 +110,26 @@
                 error:&error];
         
         Class containerClass = NSClassFromString(container);
-        NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-        for (NSDictionary *a in _json)
+        if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
-            NSMutableArray *values = [[NSMutableArray alloc] init];
-            for (NSString *arg in tags)
+            NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *a in _json)
             {
-                [values addObject:[a valueForKey:arg]];
+                NSMutableArray *values = [[NSMutableArray alloc] init];
+                for (NSString *arg in tags)
+                {
+                    [values addObject:[a valueForKey:arg]];
+                }
+                NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
+                id obj = [[containerClass alloc] initWithDictionary:param];
+                [returnArray addObject:obj];
             }
-            NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
-            id obj = [[containerClass alloc] initWithDictionary:param];
-            [returnArray addObject:obj];
-        }
-        if ([self delegate] != nil)
-            [[self delegate] parsingFinishWithResult:_json andError:_parseError];
-        else
-            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
-    });
+            if ([self delegate] != nil)
+                [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+            else
+                [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
+            }
+        });
 }
 
 - (void)parseInClass:(NSString *)container withTag:(NSMutableArray *)tags
@@ -139,22 +142,25 @@
                 error:&error];
         
         Class containerClass = NSClassFromString(container);
-        NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-        for (NSDictionary *a in _json)
+        if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
-            NSMutableArray *values = [[NSMutableArray alloc] init];
-            for (NSString *arg in tags)
+            NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *a in _json)
             {
-                [values addObject:[a valueForKey:arg]];
+                NSMutableArray *values = [[NSMutableArray alloc] init];
+                for (NSString *arg in tags)
+                {
+                    [values addObject:[a valueForKey:arg]];
+                }
+                NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
+                id obj = [[containerClass alloc] initWithDictionary:param];
+                [returnArray addObject:obj];
             }
-            NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
-            id obj = [[containerClass alloc] initWithDictionary:param];
-            [returnArray addObject:obj];
-        }
-        if ([self delegate] != nil)
-            [[self delegate] parsingFinishWithResult:_json andError:_parseError];
-        else
-            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
+            if ([self delegate] != nil)
+                [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+            else
+                [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
+            }
     });
 }
 
@@ -208,13 +214,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     switch ([self parsingType]) {
-        case parsingTypeData:
-            
-            break;
-        case parsingTypeFile:
-            
-            break;
-        case parsingTypeInClass:
+        case parsingTypeInClassWithUrl:
             [self parseInClass:[self className] withTag:[self tags]];
             break;
         case parsingTypeURL:

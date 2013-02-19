@@ -13,10 +13,8 @@
 #define kLoadDataEvent @"LoadData"
 
 typedef enum{
-    parsingTypeInClass = 0,
+    parsingTypeInClassWithUrl = 0,
     parsingTypeURL = 1,
-    parsingTypeData = 2,
-    parsingTypeFile = 3    
 }JSonParsingType;
 
 #endif

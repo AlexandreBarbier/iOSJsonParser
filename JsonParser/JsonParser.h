@@ -8,11 +8,17 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Defines.h"
+@protocol JSonParsedClass<NSObject>
+
+@required
+@property (nonatomic, strong) NSMutableArray *tags;
+- (id) initWithDictionary:(NSDictionary *)params;
+@end
+
 
 @protocol JSonParserDelegate <NSObject>
 
 @required
-
 - (void)parsingFinishWithResult:(NSMutableArray *)result andError:(NSError *)error;
 
 @end
@@ -32,10 +38,9 @@
 - (id)initWithUrl:(NSString *)Url;
 - (id)initWithData:(NSMutableData *)data;
 - (id)initWithClass:(NSString*)className andTag:(NSMutableArray *)tags forURL:(NSString *)Url;
+
 - (void)parseFile:(NSString *)filePath;
 - (void)parseData:(NSMutableData *)data;
-- (void)parse;
 - (void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags;
-- (void)parseUrl;
 
 @end
