@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		ACEC5A4816D3916100DFB7F4 /* ABJsonParser */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = ACEC5A4916D3916100DFB7F4 /* Build configuration list for PBXAggregateTarget "ABJsonParser" */;
+			buildPhases = (
+				ACEC5A4C16D391B600DFB7F4 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ABJsonParser;
+			productName = ABJsonParser;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		ACEC5A2616D38EE500DFB7F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC5A2516D38EE500DFB7F4 /* Foundation.framework */; };
+		ACEC5A2B16D38EE500DFB7F4 /* JsonParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A2A16D38EE500DFB7F4 /* JsonParser.h */; };
+		ACEC5A2D16D38EE500DFB7F4 /* JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A2C16D38EE500DFB7F4 /* JsonParser.m */; };
+		ACEC5A3D16D3910C00DFB7F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC5A2516D38EE500DFB7F4 /* Foundation.framework */; };
+		ACEC5A4216D3910C00DFB7F4 /* JsonParserSimulator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A4116D3910C00DFB7F4 /* JsonParserSimulator.h */; };
+		ACEC5A4416D3910C00DFB7F4 /* JsonParserSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A4316D3910C00DFB7F4 /* JsonParserSimulator.m */; };
+		ACEC5A7D16D3BE7200DFB7F4 /* Defines.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A3316D38F2D00DFB7F4 /* Defines.h */; };
+		ACEC5A7E16D3BE7900DFB7F4 /* Defines.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A3316D38F2D00DFB7F4 /* Defines.h */; };
+		ACEC5A7F16D3C0CD00DFB7F4 /* JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A2C16D38EE500DFB7F4 /* JsonParser.m */; };
+		ACEC5A8D16D3CB0600DFB7F4 /* JsonParsedClassBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A8C16D3CB0600DFB7F4 /* JsonParsedClassBase.m */; };
+		ACEC5A8E16D3CB0600DFB7F4 /* JsonParsedClassBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ACEC5A8C16D3CB0600DFB7F4 /* JsonParsedClassBase.m */; };
+		ACEC5A8F16D3CF2700DFB7F4 /* JsonParsedClassBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A8B16D3CB0600DFB7F4 /* JsonParsedClassBase.h */; };
+		ACEC5A9016D3CF3000DFB7F4 /* JsonParsedClassBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ACEC5A8B16D3CB0600DFB7F4 /* JsonParsedClassBase.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ACEC5A2016D38EE500DFB7F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				ACEC5A8F16D3CF2700DFB7F4 /* JsonParsedClassBase.h in CopyFiles */,
+				ACEC5A7D16D3BE7200DFB7F4 /* Defines.h in CopyFiles */,
+				ACEC5A2B16D38EE500DFB7F4 /* JsonParser.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACEC5A3A16D3910C00DFB7F4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				ACEC5A9016D3CF3000DFB7F4 /* JsonParsedClassBase.h in CopyFiles */,
+				ACEC5A7E16D3BE7900DFB7F4 /* Defines.h in CopyFiles */,
+				ACEC5A4216D3910C00DFB7F4 /* JsonParserSimulator.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		ACEC5A2216D38EE500DFB7F4 /* libJsonParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJsonParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACEC5A2516D38EE500DFB7F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ACEC5A2916D38EE500DFB7F4 /* JsonParser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JsonParser-Prefix.pch"; sourceTree = "<group>"; };
+		ACEC5A2A16D38EE500DFB7F4 /* JsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsonParser.h; sourceTree = "<group>"; };
+		ACEC5A2C16D38EE500DFB7F4 /* JsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JsonParser.m; sourceTree = "<group>"; };
+		ACEC5A3316D38F2D00DFB7F4 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		ACEC5A3C16D3910C00DFB7F4 /* libJsonParserSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJsonParserSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACEC5A4016D3910C00DFB7F4 /* JsonParserSimulator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JsonParserSimulator-Prefix.pch"; sourceTree = "<group>"; };
+		ACEC5A4116D3910C00DFB7F4 /* JsonParserSimulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JsonParserSimulator.h; sourceTree = "<group>"; };
+		ACEC5A4316D3910C00DFB7F4 /* JsonParserSimulator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JsonParserSimulator.m; sourceTree = "<group>"; };
+		ACEC5A8B16D3CB0600DFB7F4 /* JsonParsedClassBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParsedClassBase.h; sourceTree = "<group>"; };
+		ACEC5A8C16D3CB0600DFB7F4 /* JsonParsedClassBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonParsedClassBase.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ACEC5A1F16D38EE500DFB7F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACEC5A2616D38EE500DFB7F4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACEC5A3916D3910C00DFB7F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACEC5A3D16D3910C00DFB7F4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ACEC5A1916D38EE500DFB7F4 = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A2716D38EE500DFB7F4 /* JsonParser */,
+				ACEC5A3E16D3910C00DFB7F4 /* JsonParserSimulator */,
+				ACEC5A2416D38EE500DFB7F4 /* Frameworks */,
+				ACEC5A2316D38EE500DFB7F4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ACEC5A2316D38EE500DFB7F4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A2216D38EE500DFB7F4 /* libJsonParser.a */,
+				ACEC5A3C16D3910C00DFB7F4 /* libJsonParserSimulator.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ACEC5A2416D38EE500DFB7F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A2516D38EE500DFB7F4 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACEC5A2716D38EE500DFB7F4 /* JsonParser */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A2A16D38EE500DFB7F4 /* JsonParser.h */,
+				ACEC5A2C16D38EE500DFB7F4 /* JsonParser.m */,
+				ACEC5A2816D38EE500DFB7F4 /* Supporting Files */,
+				ACEC5A3316D38F2D00DFB7F4 /* Defines.h */,
+				ACEC5A8B16D3CB0600DFB7F4 /* JsonParsedClassBase.h */,
+				ACEC5A8C16D3CB0600DFB7F4 /* JsonParsedClassBase.m */,
+			);
+			path = JsonParser;
+			sourceTree = "<group>";
+		};
+		ACEC5A2816D38EE500DFB7F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A2916D38EE500DFB7F4 /* JsonParser-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ACEC5A3E16D3910C00DFB7F4 /* JsonParserSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A4116D3910C00DFB7F4 /* JsonParserSimulator.h */,
+				ACEC5A4316D3910C00DFB7F4 /* JsonParserSimulator.m */,
+				ACEC5A3F16D3910C00DFB7F4 /* Supporting Files */,
+			);
+			path = JsonParserSimulator;
+			sourceTree = "<group>";
+		};
+		ACEC5A3F16D3910C00DFB7F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ACEC5A4016D3910C00DFB7F4 /* JsonParserSimulator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ACEC5A2116D38EE500DFB7F4 /* JsonParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACEC5A3016D38EE500DFB7F4 /* Build configuration list for PBXNativeTarget "JsonParser" */;
+			buildPhases = (
+				ACEC5A1E16D38EE500DFB7F4 /* Sources */,
+				ACEC5A1F16D38EE500DFB7F4 /* Frameworks */,
+				ACEC5A2016D38EE500DFB7F4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JsonParser;
+			productName = JsonParser;
+			productReference = ACEC5A2216D38EE500DFB7F4 /* libJsonParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		ACEC5A3B16D3910C00DFB7F4 /* JsonParserSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACEC5A4516D3910C00DFB7F4 /* Build configuration list for PBXNativeTarget "JsonParserSimulator" */;
+			buildPhases = (
+				ACEC5A3816D3910C00DFB7F4 /* Sources */,
+				ACEC5A3916D3910C00DFB7F4 /* Frameworks */,
+				ACEC5A3A16D3910C00DFB7F4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JsonParserSimulator;
+			productName = JsonParserSimulator;
+			productReference = ACEC5A3C16D3910C00DFB7F4 /* libJsonParserSimulator.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ACEC5A1A16D38EE500DFB7F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alexandre Barbier";
+			};
+			buildConfigurationList = ACEC5A1D16D38EE500DFB7F4 /* Build configuration list for PBXProject "JsonParser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ACEC5A1916D38EE500DFB7F4;
+			productRefGroup = ACEC5A2316D38EE500DFB7F4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ACEC5A2116D38EE500DFB7F4 /* JsonParser */,
+				ACEC5A3B16D3910C00DFB7F4 /* JsonParserSimulator */,
+				ACEC5A4816D3916100DFB7F4 /* ABJsonParser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ACEC5A4C16D391B600DFB7F4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LIB_NAME=${PROJECT_NAME}\nBUILD_DIR=build\n\n# Create paths\nINSTALL_DIR=${BUILD_DIR}/${LIB_NAME}\nDEVICE_DIR=${BUILD_DIR}/iphoneos-iphoneos\nSIMULATOR_DIR=${BUILD_DIR}/iphonesimulator-iphonesimulator\n\n\n# Build our project using iphoneos and iphonesimulator build configurations\nxcodebuild -configuration \"iphoneos\" -target \"${LIB_NAME}\" -sdk iphoneos\nxcodebuild -configuration \"iphonesimulator\" -target \"${LIB_NAME}\" -sdk iphonesimulator\n\n# Clean the old install directory.\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Create the install directory\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${DEVICE_DIR}\"\nmkdir -p \"${SIMULATOR_DIR}\"\n# Copy the iphoneos headers into the install directory\ncp -R \"build/Release-iphoneos/include\" \"${INSTALL_DIR}\"\n\n# Use lipo tool to create 1 universal library\nlipo -create \"build/Release-iphoneos/lib${LIB_NAME}.a\" \"build/Release-iphonesimulator/lib${LIB_NAME}.a\" -output \"${INSTALL_DIR}/libJSON.a\"\n\n# Remove useless build directories\nrm -rf \"${DEVICE_DIR}\" \"${SIMULATOR_DIR}\" \"${INSTALL_DIR}.build\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ACEC5A1E16D38EE500DFB7F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACEC5A2D16D38EE500DFB7F4 /* JsonParser.m in Sources */,
+				ACEC5A8D16D3CB0600DFB7F4 /* JsonParsedClassBase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACEC5A3816D3910C00DFB7F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACEC5A4416D3910C00DFB7F4 /* JsonParserSimulator.m in Sources */,
+				ACEC5A7F16D3C0CD00DFB7F4 /* JsonParser.m in Sources */,
+				ACEC5A8E16D3CB0600DFB7F4 /* JsonParsedClassBase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ACEC5A2E16D38EE500DFB7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ACEC5A2F16D38EE500DFB7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ACEC5A3116D38EE500DFB7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/JsonParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JsonParser/JsonParser-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		ACEC5A3216D38EE500DFB7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/JsonParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JsonParser/JsonParser-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		ACEC5A4616D3910C00DFB7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/JsonParserSimulator.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JsonParserSimulator/JsonParserSimulator-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		ACEC5A4716D3910C00DFB7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/JsonParserSimulator.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JsonParserSimulator/JsonParserSimulator-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
+			};
+			name = Release;
+		};
+		ACEC5A4A16D3916100DFB7F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv6,
+					i386,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s i386 armv6";
+			};
+			name = Debug;
+		};
+		ACEC5A4B16D3916100DFB7F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv6,
+					i386,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s i386 armv6";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ACEC5A1D16D38EE500DFB7F4 /* Build configuration list for PBXProject "JsonParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACEC5A2E16D38EE500DFB7F4 /* Debug */,
+				ACEC5A2F16D38EE500DFB7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACEC5A3016D38EE500DFB7F4 /* Build configuration list for PBXNativeTarget "JsonParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACEC5A3116D38EE500DFB7F4 /* Debug */,
+				ACEC5A3216D38EE500DFB7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACEC5A4516D3910C00DFB7F4 /* Build configuration list for PBXNativeTarget "JsonParserSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACEC5A4616D3910C00DFB7F4 /* Debug */,
+				ACEC5A4716D3910C00DFB7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACEC5A4916D3916100DFB7F4 /* Build configuration list for PBXAggregateTarget "ABJsonParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACEC5A4A16D3916100DFB7F4 /* Debug */,
+				ACEC5A4B16D3916100DFB7F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ACEC5A1A16D38EE500DFB7F4 /* Project object */;
+}
