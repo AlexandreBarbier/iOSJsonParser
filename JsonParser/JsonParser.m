@@ -134,7 +134,7 @@
                 }
             }
             if ([self delegate] != nil)
-                [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+                [[self delegate] parsingFinishWithResult:returnArray andError:_parseError];
             else
                 [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
             }
@@ -182,7 +182,7 @@
                 }
             }
             if ([self delegate] != nil)
-                [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+                [[self delegate] parsingFinishWithResult:returnArray andError:_parseError];
             else
                 [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
         }

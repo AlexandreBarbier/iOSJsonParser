@@ -11,5 +11,8 @@
 
 @implementation JsonParsedClassBase
 
-
+-(id)initWithDictionary:(NSDictionary *)params{
+    self = [super init];
+    return self;
+}
 @end
