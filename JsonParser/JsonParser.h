@@ -8,13 +8,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Defines.h"
-@protocol JSonParsedClass<NSObject>
-
-@required
-@property (nonatomic, strong) NSMutableArray *tags;
-- (id) initWithDictionary:(NSDictionary *)params;
-@end
-
 
 @protocol JSonParserDelegate <NSObject>
 

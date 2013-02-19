@@ -7,7 +7,7 @@
 //
 
 #import "JsonParser.h"
-
+#import "JsonParsedClassBase.h"
 
 @implementation JsonParser
 
@@ -108,21 +108,30 @@
                 JSONObjectWithData:data
                 options:kNilOptions
                 error:&error];
-        
         Class containerClass = NSClassFromString(container);
         if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
             NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+            NSMutableArray *realTag = [[NSMutableArray alloc] init];
             for (NSDictionary *a in _json)
             {
                 NSMutableArray *values = [[NSMutableArray alloc] init];
+                
                 for (NSString *arg in tags)
                 {
-                    [values addObject:[a valueForKey:arg]];
+                    if ([a valueForKey:arg]!= nil){
+                        [values addObject:[a valueForKey:arg]];
+                        [realTag addObject:arg];
+                    }
                 }
-                NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
-                id obj = [[containerClass alloc] initWithDictionary:param];
-                [returnArray addObject:obj];
+                if (values != nil){
+                    NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
+                    [realTag removeAllObjects];
+                    if (param != nil){
+                        id obj = [[containerClass alloc] initWithDictionary:param];
+                        [returnArray addObject:obj];
+                    }
+                }
             }
             if ([self delegate] != nil)
                 [[self delegate] parsingFinishWithResult:_json andError:_parseError];
@@ -134,33 +143,49 @@
 
 - (void)parseInClass:(NSString *)container withTag:(NSMutableArray *)tags
 {
+    
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSError* error;
         _json = [NSJSONSerialization
-                JSONObjectWithData:_responseData
-                options:kNilOptions
-                error:&error];
-        
+                 JSONObjectWithData:_responseData
+                 options:kNilOptions
+                 error:&error];
         Class containerClass = NSClassFromString(container);
         if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
             NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+            NSMutableArray *realTag = [[NSMutableArray alloc] init];
             for (NSDictionary *a in _json)
             {
                 NSMutableArray *values = [[NSMutableArray alloc] init];
+                
                 for (NSString *arg in tags)
                 {
-                    [values addObject:[a valueForKey:arg]];
+                    @try {
+                        if ([a valueForKey:arg]!= nil){
+                            [values addObject:[a valueForKey:arg]];
+                            [realTag addObject:arg];
+                        }
+                    }
+                    @catch (NSException *exception) {
+                        
+                    }
+                
                 }
-                NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:tags];
-                id obj = [[containerClass alloc] initWithDictionary:param];
-                [returnArray addObject:obj];
+                if (values != nil){
+                    NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
+                    [realTag removeAllObjects];
+                    if (param != nil){
+                        id obj = [[containerClass alloc] initWithDictionary:param];
+                        [returnArray addObject:obj];
+                    }
+                }
             }
             if ([self delegate] != nil)
                 [[self delegate] parsingFinishWithResult:_json andError:_parseError];
             else
                 [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
-            }
+        }
     });
 }
 
