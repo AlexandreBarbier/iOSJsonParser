@@ -9,14 +9,27 @@
 #import "JsonParser.h"
 #import "JsonParsedClassBase.h"
 
+@interface JsonParser()
+
+@property (nonatomic, strong) NSMutableData             *responseData;
+
+@property (nonatomic, strong) NSError                   *parseError;
+@property (nonatomic, strong) NSError                   *connectionError;
+@property (nonatomic) JSonParsingType                   parsingType;
+@property (nonatomic, strong) NSString                   *className;
+@property (nonatomic, strong) NSMutableArray            *tags;
+
+@end
+
 @implementation JsonParser
 
 
 #pragma mark - Initialisation
 
-- (id)initWithUrl:(NSString *)Url
+- (id)initAndParseUrl:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate
 {
     self = [super init];
+    [self setDelegate:delegate];
     [self setParsingType:parsingTypeURL];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];    
@@ -25,11 +38,27 @@
     [connection isProxy];
     _responseData = [[NSMutableData alloc]init];
     _json = [[NSMutableArray alloc] init];
+    [self parse];
     return self;
 }
 
-- (id)initWithClass:(NSString*)className andTag:(NSMutableArray *)tags forURL:(NSString *)Url{
+- (id)initAndParseUrlRequest:(NSURLRequest *)Url withDelegate:(id<JSonParserDelegate>)delegate{
     self = [super init];
+    [self setDelegate:delegate];
+    [self setParsingType:parsingTypeURL];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:Url delegate:self];
+    [connection isProxy];
+    _responseData = [[NSMutableData alloc]init];
+    _json = [[NSMutableArray alloc] init];
+    return self;
+}
+
+- (id)initAndParseInClass:(NSString*)className andTag:(NSMutableArray *)tags forURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate
+{
+    self = [super init];
+    [self setDelegate:delegate];
     [self setParsingType:parsingTypeInClassWithUrl];
     [self setClassName:className];
     [self setTags:tags];
@@ -43,15 +72,29 @@
     return self;
 }
 
-- (id)initWithData:(NSMutableData *)data{
+- (id)initAndParseData:(NSMutableData *)data withDelegate:(id <JSonParserDelegate>)delegate
+{
     self = [super init];
     _responseData = data;
+    [self setDelegate:delegate];
+    [self parse];
     return self;
 }
 
+- (id)initAndParseData:(NSMutableData *)data inClasse:(NSString *)class withTag:(NSMutableArray *)tags withDelegate:(id <JSonParserDelegate>)delegate
+{
+    self = [super init];
+    _responseData = data;
+    [self setDelegate:delegate];
+    [self parseInClass:class withTag:tags withDelegate:delegate];
+    return self;
+}
+
+
+
 #pragma mark - parsing
 
-- (void)parseUrl
+- (void)parseUrl 
 {
     NSError* error;
     _json = [NSJSONSerialization
@@ -60,14 +103,15 @@
             error:&error];
     _parseError = error;
     if ([self delegate] != nil)
-        [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+        [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
     else
         [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
 }
 
-- (void)parseFile:(NSString *)filePath
+- (void)parseFile:(NSString *)filePath withDelegate:(id <JSonParserDelegate>)delegate
 {
     _responseData = [[NSMutableData alloc] initWithContentsOfFile:filePath];
+    [self setDelegate:delegate];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSError* error;
         _json = [NSJSONSerialization
@@ -76,15 +120,16 @@
                 error:&error];
         _parseError = error;
         if ([self delegate] != nil)
-            [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+            [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
         else
             [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
     });
     
 }
 
-- (void)parseData:(NSMutableData *)data
+- (void)parseData:(NSMutableData *)data withDelegate:(id <JSonParserDelegate>)delegate
 {
+    [self setDelegate:delegate];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                    ^{
                        NSError* error;
@@ -94,14 +139,15 @@
                                error:&error];
                        _parseError = error;
                        if ([self delegate] != nil)
-                           [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+                           [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
                        else
                            [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
                    });
 }
 
-- (void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags
+- (void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags withDelegate:(id <JSonParserDelegate>)delegate
 {
+    [self setDelegate:delegate];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSError* error;
         _json = [NSJSONSerialization
@@ -134,16 +180,16 @@
                 }
             }
             if ([self delegate] != nil)
-                [[self delegate] parsingFinishWithResult:returnArray andError:_parseError];
+                [[self delegate] parsingFinishWithObjectArrayResult:returnArray andError:_parseError];
             else
                 [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
             }
         });
 }
 
-- (void)parseInClass:(NSString *)container withTag:(NSMutableArray *)tags
+- (void)parseInClass:(NSString *)container withTag:(NSMutableArray *)tags withDelegate:(id <JSonParserDelegate>)delegate
 {
-    
+    [self setDelegate:delegate];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSError* error;
         _json = [NSJSONSerialization
@@ -168,9 +214,8 @@
                         }
                     }
                     @catch (NSException *exception) {
-                        
+                        NSLog(@"Exception in JSonParser %@", exception);
                     }
-                
                 }
                 if (values != nil){
                     NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
@@ -182,7 +227,7 @@
                 }
             }
             if ([self delegate] != nil)
-                [[self delegate] parsingFinishWithResult:returnArray andError:_parseError];
+                [[self delegate] parsingFinishWithObjectArrayResult:returnArray andError:_parseError];
             else
                 [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:returnArray];
         }
@@ -199,7 +244,7 @@
                 error:&error];
         _parseError = error;
         if ([self delegate] != nil)
-            [[self delegate] parsingFinishWithResult:_json andError:_parseError];
+            [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
         else
             [[NSNotificationCenter defaultCenter] postNotificationName:kParsingFinishEvent object:nil];
     });
@@ -240,7 +285,7 @@
     
     switch ([self parsingType]) {
         case parsingTypeInClassWithUrl:
-            [self parseInClass:[self className] withTag:[self tags]];
+            [self parseInClass:[self className] withTag:[self tags] withDelegate:[self delegate]];
             break;
         case parsingTypeURL:
             [self parseUrl];
