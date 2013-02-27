@@ -12,9 +12,22 @@
 #define kParsingFinishEvent @"ParsingFinish"
 #define kLoadDataEvent @"LoadData"
 
-typedef enum{
+
+@protocol JSonParsedClass<NSObject>
+
+@required
+
+- (id)initWithDictionary:(NSDictionary *)params;
++ (NSArray *)getTags;
+@end
+
+
+typedef enum
+{
     parsingTypeInClassWithUrl = 0,
     parsingTypeURL = 1,
+    parsingClassWithUrl = 2
+    
 }JSonParsingType;
 
 #endif

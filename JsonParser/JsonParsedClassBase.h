@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@protocol JSonParsedClass<NSObject>
-@required
-- (id)initWithDictionary:(NSDictionary *)params;
-@end
+#import "Defines.h"
 
 @interface JsonParsedClassBase : NSObject <JSonParsedClass>
 

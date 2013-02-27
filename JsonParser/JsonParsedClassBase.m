@@ -15,4 +15,8 @@
     self = [super init];
     return self;
 }
+
++(NSArray *)getTags{
+    return [NSArray arrayWithObject:nil];
+}
 @end

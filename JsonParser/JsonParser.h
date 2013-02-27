@@ -29,6 +29,9 @@
 
 @interface JsonParser : NSObject
 
+
+@property(nonatomic,strong) Class                       parsedClass;
+
 /*!
  * @property delegate
  * @description the delegate for the parsing finish method
@@ -45,6 +48,10 @@
  */
 - (id)initAndParseUrl:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate;
 
+
+- (id)initAndParseInClass:(Class)cl WithURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate;
+
+- (id)initAndParseInClass:(Class)cl WithURLRequest:(NSURLRequest *)Url withDelegate:(id <JSonParserDelegate>)delegate;
 /*!
  * @method
  * @param Url
@@ -85,5 +92,11 @@
  * @description return the result in parsingFinishWithObjectArrayResult:result andError:error;
  */
 - (void)parseData:(NSMutableData *)data inClass:(NSString *)container withTag:(NSMutableArray *)tags withDelegate:(id <JSonParserDelegate>)delegate;
+
+/*!
+ * @method
+ * @description return the result in parsingFinishWithObjectArrayResult:result andError:error;
+ */
+-(void)parsingInClassWithData:(NSMutableData *)data withDelegate:(id <JSonParserDelegate>)delegate;
 
 @end
