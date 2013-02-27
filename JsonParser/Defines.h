@@ -12,6 +12,18 @@
 #define kParsingFinishEvent @"ParsingFinish"
 #define kLoadDataEvent @"LoadData"
 
+/*!
+ * @protocol JSonParserDelegate
+ * @description Implement this protocol if you want to use delegate to receive parsing result
+ */
+@protocol JSonParserDelegate <NSObject>
+
+@optional
+
+- (void)parsingFinishWithJsonResult:(NSMutableArray *)result andError:(NSError *)error;
+- (void)parsingFinishWithObjectArrayResult:(NSMutableArray *)result andError:(NSError *)error;
+
+@end
 
 @protocol JSonParsedClass<NSObject>
 
@@ -19,6 +31,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)params;
 + (NSArray *)getTags;
+
 @end
 
 

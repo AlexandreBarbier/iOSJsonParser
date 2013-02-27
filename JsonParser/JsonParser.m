@@ -12,7 +12,6 @@
 @interface JsonParser()
 
 @property (nonatomic, strong) NSMutableData             *responseData;
-
 @property (nonatomic, strong) NSError                   *parseError;
 @property (nonatomic, strong) NSError                   *connectionError;
 @property (nonatomic) JSonParsingType                   parsingType;
@@ -72,11 +71,11 @@
     return self;
 }
 
-- (id)initAndParseInClass:(Class)cl WithURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate
+- (id)initAndParseInClass:(Class)parsingClass WithURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate
 {
     self = [super init];
     [self setDelegate:delegate];
-    [self setParsedClass:cl];
+    [self setParsedClass:parsingClass];
     [self setParsingType:parsingClassWithUrl];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];
@@ -88,11 +87,11 @@
     return self;
 }
 
-- (id)initAndParseInClass:(Class)cl WithURLRequest:(NSURLRequest *)Url withDelegate:(id <JSonParserDelegate>)delegate
+- (id)initAndParseInClass:(Class)parsingClass WithURLRequest:(NSURLRequest *)Url withDelegate:(id <JSonParserDelegate>)delegate
 {
     self = [super init];
     [self setDelegate:delegate];
-    [self setParsedClass:cl];
+    [self setParsedClass:parsingClass];
     [self setParsingType:parsingClassWithUrl];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];
@@ -132,6 +131,8 @@
             JSONObjectWithData:_responseData
             options:kNilOptions
             error:&error];
+    if (![NSJSONSerialization isValidJSONObject:_json])
+        [NSException raise:@"Invalid Json format" format:@"JSON parsed is not valid"];
     _parseError = error;
     if ([self delegate] != nil)
         [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
@@ -149,6 +150,8 @@
                 JSONObjectWithData:_responseData
                 options:kNilOptions
                 error:&error];
+        if (![NSJSONSerialization isValidJSONObject:_json])
+            [NSException raise:@"Invalid Json format" format:@"JSON parsed is not valid"];
         _parseError = error;
         if ([self delegate] != nil)
             [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
@@ -168,6 +171,8 @@
                                JSONObjectWithData:data
                                options:kNilOptions
                                error:&error];
+                       if (![NSJSONSerialization isValidJSONObject:_json])
+                           [NSException raise:@"Invalid Json format" format:@"JSON parsed is not valid"];
                        _parseError = error;
                        if ([self delegate] != nil)
                            [[self delegate] parsingFinishWithJsonResult:_json andError:_parseError];
@@ -189,39 +194,16 @@
                  error:&error];
         
         if (![NSJSONSerialization isValidJSONObject:_json])
-            NSLog(@"PARSING    : Invalid JSON");
+            [NSException raise:@"Invalid Json format" format:@"JSON parsed is not valid"];
         
         if ([[self parsedClass] conformsToProtocol:@protocol(JSonParsedClass)])
         {
             NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-            NSMutableArray *realTag = [[NSMutableArray alloc] init];
             for (NSDictionary *a in _json)
             {
-                NSMutableArray *values = [[NSMutableArray alloc] init];
-                
-                for (NSString *arg in  [[self parsedClass] getTags])
-                {
-                    @try {
-                        if ([a valueForKey:arg]!= nil){
-                            [values addObject:[a valueForKey:arg]];
-                            [realTag addObject:arg];
-                        }
-                    }
-                    @catch (NSException *exception) {
-                        
-                    }
-                    @finally {
-                        
-                    }
-                
-                }
-                if (values != nil){
-                    NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
-                    [realTag removeAllObjects];
-                    if (param != nil){
-                        id obj = [[[self parsedClass] alloc] initWithDictionary:param];
-                        [returnArray addObject:obj];
-                    }
+                if (a != nil){
+                    id obj = [[[self parsedClass] alloc] initWithDictionary:a];
+                    [returnArray addObject:obj];
                 }
             }
             if ([self delegate] != nil)
@@ -245,25 +227,11 @@
         if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
             NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-            NSMutableArray *realTag = [[NSMutableArray alloc] init];
             for (NSDictionary *a in _json)
             {
-                NSMutableArray *values = [[NSMutableArray alloc] init];
-                
-                for (NSString *arg in tags)
-                {
-                    if ([a valueForKey:arg]!= nil){
-                        [values addObject:[a valueForKey:arg]];
-                        [realTag addObject:arg];
-                    }
-                }
-                if (values != nil){
-                    NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
-                    [realTag removeAllObjects];
-                    if (param != nil){
-                        id obj = [[containerClass alloc] initWithDictionary:param];
-                        [returnArray addObject:obj];
-                    }
+                if (a != nil){
+                    id obj = [[containerClass alloc] initWithDictionary:a];
+                    [returnArray addObject:obj];
                 }
             }
             if ([self delegate] != nil)
@@ -287,31 +255,11 @@
         if ([containerClass conformsToProtocol:@protocol(JSonParsedClass)])
         {
             NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-            NSMutableArray *realTag = [[NSMutableArray alloc] init];
-            NSLog(@"JSON     %@",_json);
             for (NSDictionary *a in _json)
             {
-                NSMutableArray *values = [[NSMutableArray alloc] init];
-                
-                for (NSString *arg in tags)
-                {
-                    @try {
-                        if ([a valueForKey:arg]!= nil){
-                            [values addObject:[a valueForKey:arg]];
-                            [realTag addObject:arg];
-                        }
-                    }
-                    @catch (NSException *exception) {
-                        NSLog(@"Exception in JSonParser %@", exception);
-                    }
-                }
-                if (values != nil){
-                    NSDictionary *param = [[NSDictionary alloc]initWithObjects:values forKeys:realTag];
-                    [realTag removeAllObjects];
-                    if (param != nil){
-                        id obj = [[containerClass alloc] initWithDictionary:param];
-                        [returnArray addObject:obj];
-                    }
+                if (a != nil){
+                    id obj = [[containerClass alloc] initWithDictionary:a];
+                    [returnArray addObject:obj];
                 }
             }
             if ([self delegate] != nil)

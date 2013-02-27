@@ -8,18 +8,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Defines.h"
-/*!
- * @protocol JSonParserDelegate
- * @description Implement this protocol if you want to use delegate to receive parsing result
-*/
-@protocol JSonParserDelegate <NSObject>
-
-@optional
-
-- (void)parsingFinishWithJsonResult:(NSMutableArray *)result andError:(NSError *)error;
-- (void)parsingFinishWithObjectArrayResult:(NSMutableArray *)result andError:(NSError *)error;
-
-@end
 
 /*!
  * @interface JsonParser
@@ -42,16 +30,26 @@
  * @description the parsed json never get it except if you are using notification center to get result
  */
 @property (nonatomic, strong) NSMutableArray            *json;
+
+
+@property (nonatomic) Boolean                           *useNotificationCenter;
 /*!
  * @method
  * @param Url
  */
 - (id)initAndParseUrl:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate;
 
+/*!
+ * @method
+ * @param Url
+ */
+- (id)initAndParseInClass:(Class)parsingClass WithURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate;
 
-- (id)initAndParseInClass:(Class)cl WithURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate;
-
-- (id)initAndParseInClass:(Class)cl WithURLRequest:(NSURLRequest *)Url withDelegate:(id <JSonParserDelegate>)delegate;
+/*!
+ * @method
+ * @param Url
+ */
+- (id)initAndParseInClass:(Class)parsingClass WithURLRequest:(NSURLRequest *)Url withDelegate:(id <JSonParserDelegate>)delegate;
 /*!
  * @method
  * @param Url
