@@ -33,7 +33,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:Url]];
-	NSURLConnection *connection =[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection isProxy];
     _responseData = [[NSMutableData alloc]init];
     _json = [[NSMutableArray alloc] init];
@@ -53,6 +53,8 @@
     _json = [[NSMutableArray alloc] init];
     return self;
 }
+
+
 
 - (id)initAndParseInClass:(NSString*)className andTag:(NSMutableArray *)tags forURL:(NSString *)Url withDelegate:(id <JSonParserDelegate>)delegate
 {
@@ -84,6 +86,19 @@
     [connection isProxy];
     _responseData = [[NSMutableData alloc]init];
     _json = [[NSMutableArray alloc] init];
+    return self;
+}
+
+- (id)initAndParseInClass:(Class)parsingClass WithData:(NSMutableData *)data withDelegate:(id <JSonParserDelegate>)delegate
+{
+    self = [super init];
+    [self setDelegate:delegate];
+    [self setParsedClass:parsingClass];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ParsingFinishEvent:) name:kParsingFinishEvent object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LoadData:) name:kLoadDataEvent object:nil];
+    _responseData = data;
+    _json = [[NSMutableArray alloc] init];
+    [self parsingInClassWithData:_responseData withDelegate:[self delegate]];
     return self;
 }
 
