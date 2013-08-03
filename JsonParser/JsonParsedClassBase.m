@@ -11,12 +11,13 @@
 
 @implementation JsonParsedClassBase
 
--(id)initWithDictionary:(NSDictionary *)params{
+- (id)initWithDictionary:(NSDictionary *)params {
     self = [super init];
     return self;
 }
 
-+(NSArray *)getTags{
++ (NSArray *)getTags {
     return [NSArray arrayWithObject:nil];
 }
+
 @end

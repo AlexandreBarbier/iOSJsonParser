@@ -9,8 +9,8 @@
 #ifndef JsonParser_Defines_h
 #define JsonParser_Defines_h
 
-#define kParsingFinishEvent @"ParsingFinish"
-#define kLoadDataEvent @"LoadData"
+#define kParsingFinishEvent @ "ParsingFinish"
+#define kLoadDataEvent      @ "LoadData"
 
 /*!
  * @protocol JSonParserDelegate
@@ -35,12 +35,10 @@
 @end
 
 
-typedef enum
-{
+typedef enum {
     parsingTypeInClassWithUrl = 0,
     parsingTypeURL = 1,
     parsingClassWithUrl = 2
-    
 }JSonParsingType;
 
 #endif
